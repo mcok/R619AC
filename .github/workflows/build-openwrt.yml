@@ -13,6 +13,8 @@
 name: Build OpenWrt R619AC
 
 on:
+  workflow_dispatch:
+
   repository_dispatch:
 #  release:
 #    types: published
@@ -180,7 +182,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.LEO_TOKEN }}
       with:
-        tag_name: ${{ steps.tag.outputs.release_tag }}    
+        tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
 
